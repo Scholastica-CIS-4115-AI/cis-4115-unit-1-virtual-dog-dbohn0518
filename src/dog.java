@@ -155,11 +155,12 @@ public class dog {
      *
      * @param currentAction is a Actions enum which corresponds to the action the user selected from the user interface
      */
+    //Updated Happy states Dbohn 1/23/17
     private void updateHappy(Actions currentAction) {
         switch (currentAction) {
             case PET:								//dog is being petted
             case FEED:								//or dog is being fed
-                setState(States.HAPPY); 			//  the dog stays happy
+                setState(States.SLEEPY); 			//  the dog stays happy
                 break;
             case WALK:								//dog is being walked
                 setState(States.HUNGRY); 			//  this makes the dog hungry
@@ -176,6 +177,7 @@ public class dog {
      *
      * @param currentAction is a Actions enum which corresponds to the action the user selected from the user interface
      */
+    //Updated Sad states Dbohn 1/23/17
     private void updateSad(Actions currentAction) {
         switch (currentAction) {
             case PET:
@@ -186,7 +188,7 @@ public class dog {
                 setState(States.HUNGRY);
                 break;
             case IGNORE:
-                setState(States.SAD);
+                setState(States.ANGRY);
                 break;
         }
     }
@@ -197,9 +199,12 @@ public class dog {
      *
      * @param currentAction is a Actions enum which corresponds to the action the user selected from the user interface
      */
+    //Updated Hungry states Dbohn 1/23/17
     private void updateHungry(Actions currentAction) {
         switch (currentAction) {
             case PET:
+                setState(States.ANGRY);
+                break;
             case WALK:
                 setState(States.HUNGRY);
                 break;
@@ -218,11 +223,15 @@ public class dog {
      *
      * @param currentAction is a Actions enum which corresponds to the action the user selected from the user interface
      */
+    //Updated Angry states Dbohn 1/23/17
     private void updateAngry(Actions currentAction) {
         switch (currentAction) {
             case PET:
             case WALK:
+                setState(States.HUNGRY);
+                break;
             case FEED:
+                setState(States.HAPPY);
             case IGNORE:
                 setState(States.ANGRY); 			// Currently the dog always stays angry, not matter what you do
                 break;
@@ -235,14 +244,17 @@ public class dog {
      *
      * @param currentAction is a Actions enum which corresponds to the action the user selected from the user interface
      */
+    //Updated Sleepy states Dbohn 1/23/17
     private void updateSleepy(Actions currentAction) {
         switch (currentAction) {
             case PET:
+                setState(States.HAPPY);
+                break;
             case WALK:
-            case FEED:
-            case IGNORE:
                 setState(States.ANGRY); 			// Currently the dog always stays angry, not matter what you do
                 break;
+            case FEED:
+            case IGNORE:
         }
     }
 
